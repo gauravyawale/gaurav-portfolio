@@ -96,151 +96,143 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="relative py-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto scroll-mt-20"
+      className="relative py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto scroll-mt-20 border-t border-[#d6dae5] dark:border-[#2a2e3d]"
     >
-      {/* Background radial glow */}
-      <div
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 w-[600px] h-[350px] bg-cyan-600/10 rounded-full blur-[140px] pointer-events-none"
-        aria-hidden="true"
-      />
-
       <div className="text-center max-w-3xl mx-auto mb-16">
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-panel border-cyan-500/30 text-cyan-700 dark:text-cyan-400 text-xs font-mono mb-4">
-          <Mail className="w-3.5 h-3.5" />
-          <span>CONTACT &amp; INQUIRIES</span>
+        <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#ffffff] dark:bg-[#161922] border border-[#d6dae5] dark:border-[#2a2e3d] text-[#0c0e12] dark:text-[#f1f3f9] text-xs font-mono mb-4">
+          <Mail className="w-3.5 h-3.5 text-[#f59e0b]" />
+          <span>COMMUNICATIONS // DIRECT DISPATCH &amp; INQUIRIES</span>
         </div>
-        <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-4">
-          Get in <span className="glow-accent-text">Touch</span>
+        <h2 className="text-3xl sm:text-5xl font-bold text-[#0c0e12] dark:text-[#f1f3f9] tracking-tight mb-4">
+          Initiate <span className="text-[#d97706] dark:text-[#f59e0b]">Contact</span>
         </h2>
-        <p className="text-slate-600 dark:text-slate-400 text-sm sm:text-base leading-relaxed">
+        <p className="text-[#4b5262] dark:text-[#9ba1b0] text-sm sm:text-base leading-relaxed">
           Open to discuss senior software engineering roles, full-stack web applications, technical consulting, and frontend performance initiatives.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
         {/* Left Information Card */}
-        <div className="lg:col-span-2 glass-panel rounded-3xl p-6 sm:p-8 border-slate-200/80 dark:border-white/[0.08] flex flex-col justify-between space-y-8">
+        <div className="lg:col-span-2 bg-[#ffffff] dark:bg-[#161922] border border-[#d6dae5] dark:border-[#2a2e3d] p-6 sm:p-7 flex flex-col justify-between space-y-6 relative corner-crosshair">
           <div>
-            <div className="flex items-center gap-2 text-emerald-600 dark:text-emerald-400 font-mono text-xs mb-3">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 dark:bg-emerald-400 animate-ping" />
-              <span>AVAILABILITY</span>
+            <div className="flex items-center gap-2 font-mono text-[11px] text-[#f59e0b] mb-2 uppercase tracking-wider">
+              <span className="w-1.5 h-1.5 bg-[#f59e0b] animate-pulse" />
+              <span>CURRENT STATUS</span>
             </div>
-            <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-2">
+            <h3 className="text-xl font-bold text-[#0c0e12] dark:text-[#f1f3f9] mb-2">
               {profile.statusBadge}
             </h3>
-            <p className="text-slate-600 dark:text-slate-300 text-xs sm:text-sm leading-relaxed mb-6">
-              Experienced Senior Software Engineer with a focus on React, Next.js, TypeScript, and high-performance web systems. Feel free to reach out via the form or through direct email and social channels.
+            <p className="text-xs text-[#4b5262] dark:text-[#9ba1b0] leading-relaxed mb-6 font-normal">
+              Senior Software Engineer with 4+ years of production experience across enterprise SCADA systems, Next.js applications, and distributed platforms. Feel free to reach out via the dispatch console or directly through email.
             </p>
 
             {/* Direct Email with 1-Click Copy */}
-            <div className="p-4 rounded-2xl bg-slate-100/70 dark:bg-slate-950/60 border border-slate-200/80 dark:border-white/[0.06] mb-6">
-              <div className="text-xs font-mono text-slate-500 dark:text-slate-400 mb-1.5">
-                Direct Email:
+            <div className="p-3.5 bg-[#edf0f5] dark:bg-[#0c0e12] border border-[#d6dae5] dark:border-[#2a2e3d] mb-5">
+              <div className="text-[10px] font-mono text-[#727a8c] dark:text-[#656d7e] uppercase tracking-wider mb-1">
+                PRIMARY INBOX:
               </div>
               <div className="flex items-center justify-between gap-2">
                 <a
                   href={`mailto:${profile.socials.email}`}
-                  className="font-mono text-sm text-cyan-700 dark:text-cyan-400 hover:underline truncate"
+                  className="font-mono text-xs text-[#0c0e12] dark:text-[#f1f3f9] hover:text-[#f59e0b] truncate"
                 >
                   {profile.socials.email}
                 </a>
                 <button
                   type="button"
                   onClick={handleCopyEmail}
-                  className="px-2.5 py-1.5 rounded-lg bg-cyan-50 dark:bg-cyan-950/60 hover:bg-cyan-100 dark:hover:bg-cyan-900/80 border border-cyan-300 dark:border-cyan-500/30 text-cyan-800 dark:text-cyan-300 text-xs font-mono flex items-center gap-1.5 transition-all cursor-pointer shrink-0"
-                  title="Copy email to clipboard"
+                  className="px-2 py-1 bg-[#ffffff] dark:bg-[#161922] border border-[#d6dae5] dark:border-[#2a2e3d] hover:border-[#f59e0b] text-[#0c0e12] dark:text-[#f1f3f9] text-[11px] font-mono flex items-center gap-1 transition-all cursor-pointer shrink-0"
+                  title="Copy email address"
                 >
                   {copied ? (
                     <>
-                      <Check className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
-                      <span className="text-emerald-600 dark:text-emerald-400">Copied</span>
+                      <Check className="w-3 h-3 text-[#f59e0b]" />
+                      <span className="text-[#f59e0b]">COPIED</span>
                     </>
                   ) : (
                     <>
-                      <Copy className="w-3.5 h-3.5" />
-                      <span>Copy</span>
+                      <Copy className="w-3 h-3 text-[#727a8c] dark:text-[#656d7e]" />
+                      <span>COPY</span>
                     </>
                   )}
                 </button>
               </div>
             </div>
 
-            {/* Location & Response Details */}
-            <div className="space-y-3 font-mono text-xs text-slate-600 dark:text-slate-300">
-              <div className="flex items-center gap-2.5">
-                <MapPin className="w-4 h-4 text-cyan-600 dark:text-cyan-400" />
-                <span>{profile.location}</span>
+            {/* Location & Metadata */}
+            <div className="space-y-2 font-mono text-xs text-[#727a8c] dark:text-[#656d7e]">
+              <div className="flex items-center gap-2">
+                <MapPin className="w-3.5 h-3.5 text-[#f59e0b]" />
+                <span className="text-[#4b5262] dark:text-[#9ba1b0]">{profile.location}</span>
               </div>
-              <div className="flex items-center gap-2.5">
-                <Terminal className="w-4 h-4 text-violet-600 dark:text-violet-400" />
-                <span>Direct delivery to gsyawale@gmail.com</span>
+              <div className="flex items-center gap-2">
+                <Terminal className="w-3.5 h-3.5 text-[#f59e0b]" />
+                <span>SERVER_DISPATCH // RESEND_ROUTER</span>
               </div>
             </div>
           </div>
 
           {/* Social Links */}
-          <div className="pt-6 border-t border-slate-200/80 dark:border-white/[0.06]">
-            <div className="text-xs font-mono text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-3">
-              Professional Profiles
+          <div className="pt-5 border-t border-[#d6dae5] dark:border-[#2a2e3d]">
+            <div className="text-[10px] font-mono text-[#727a8c] dark:text-[#656d7e] uppercase tracking-wider mb-2.5">
+              EXTERNAL NETWORKS
             </div>
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2">
               <a
                 href={profile.socials.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 px-3.5 py-2.5 rounded-xl glass-panel hover:text-cyan-600 dark:hover:text-cyan-400 hover:border-cyan-500/40 transition-all hover:scale-[1.02] text-xs font-mono text-slate-700 dark:text-slate-300"
+                className="flex items-center gap-2 px-3 py-2 bg-[#edf0f5] dark:bg-[#0c0e12] border border-[#d6dae5] dark:border-[#2a2e3d] hover:border-[#f59e0b] text-xs font-mono text-[#0c0e12] dark:text-[#f1f3f9] hover:text-[#f59e0b] transition-all"
                 aria-label="GitHub Profile"
               >
-                <GithubIcon className="w-4 h-4 text-slate-700 dark:text-slate-200" />
-                <span>GitHub</span>
+                <GithubIcon className="w-3.5 h-3.5" />
+                <span>GITHUB</span>
               </a>
               <a
                 href={profile.socials.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 px-3.5 py-2.5 rounded-xl glass-panel hover:text-cyan-600 dark:hover:text-cyan-400 hover:border-cyan-500/40 transition-all hover:scale-[1.02] text-xs font-mono text-slate-700 dark:text-slate-300"
+                className="flex items-center gap-2 px-3 py-2 bg-[#edf0f5] dark:bg-[#0c0e12] border border-[#d6dae5] dark:border-[#2a2e3d] hover:border-[#f59e0b] text-xs font-mono text-[#0c0e12] dark:text-[#f1f3f9] hover:text-[#f59e0b] transition-all"
                 aria-label="LinkedIn Profile"
               >
-                <LinkedinIcon className="w-4 h-4 text-slate-700 dark:text-slate-200" />
-                <span>LinkedIn</span>
+                <LinkedinIcon className="w-3.5 h-3.5" />
+                <span>LINKEDIN</span>
               </a>
             </div>
           </div>
         </div>
 
         {/* Right Form Card */}
-        <div className="lg:col-span-3 glass-panel rounded-3xl p-6 sm:p-8 border-slate-200/80 dark:border-white/[0.08]">
-          <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-2">
-            Send a Direct Message
-          </h3>
-          <p className="text-slate-600 dark:text-slate-400 text-xs sm:text-sm mb-6">
-            Validated message delivery sent directly to my personal inbox.
-          </p>
+        <div className="lg:col-span-3 bg-[#ffffff] dark:bg-[#161922] border border-[#d6dae5] dark:border-[#2a2e3d] p-6 sm:p-7 relative corner-crosshair">
+          <div className="flex items-center justify-between pb-3 mb-4 border-b border-[#d6dae5] dark:border-[#2a2e3d] font-mono text-xs">
+            <span className="text-[#0c0e12] dark:text-[#f1f3f9] font-medium">DISPATCH CONSOLE</span>
+            <span className="text-[#727a8c] dark:text-[#656d7e] text-[10px]">[ END-TO-END VERIFIED ]</span>
+          </div>
 
           {submitSuccess ? (
-            <div className="p-8 text-center rounded-2xl bg-emerald-50 dark:bg-slate-950/80 border border-emerald-300 dark:border-emerald-500/30 space-y-4 animate-in fade-in duration-200">
-              <div className="w-12 h-12 rounded-full bg-emerald-100 dark:bg-emerald-500/10 border border-emerald-300 dark:border-emerald-500/30 flex items-center justify-center mx-auto text-emerald-600 dark:text-emerald-400">
-                <CheckCircle2 className="w-6 h-6" />
+            <div className="p-8 text-center bg-[#edf0f5] dark:bg-[#0c0e12] border border-[#f59e0b]/40 space-y-4 animate-in fade-in duration-150">
+              <div className="w-10 h-10 border border-[#f59e0b] flex items-center justify-center mx-auto text-[#f59e0b]">
+                <CheckCircle2 className="w-5 h-5" />
               </div>
-              <h4 className="text-lg font-bold text-slate-900 dark:text-white">
-                Message Sent Successfully!
+              <h4 className="text-base font-bold text-[#0c0e12] dark:text-[#f1f3f9] font-mono uppercase tracking-wide">
+                Message Dispatched Successfully
               </h4>
-              <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 max-w-md mx-auto leading-relaxed">
-                Thank you for reaching out. Your message has been delivered to{" "}
-                <span className="font-mono text-cyan-700 dark:text-cyan-300">{profile.socials.email}</span>. I will review it and get back to you shortly.
+              <p className="text-xs text-[#4b5262] dark:text-[#9ba1b0] max-w-md mx-auto leading-relaxed">
+                Thank you for getting in touch. Your message has been routed to{" "}
+                <span className="font-mono text-[#d97706] dark:text-[#f59e0b]">{profile.socials.email}</span>. You will receive a direct reply shortly.
               </p>
               <button
                 type="button"
                 onClick={() => setSubmitSuccess(false)}
-                className="mt-4 px-5 py-2.5 rounded-xl text-xs font-mono text-cyan-700 dark:text-cyan-400 bg-cyan-50 dark:bg-cyan-950/40 border border-cyan-300 dark:border-cyan-500/30 hover:bg-cyan-100 dark:hover:bg-cyan-900/50 transition-colors cursor-pointer"
+                className="mt-3 px-4 py-2 font-mono text-xs font-semibold text-[#0c0e12] bg-[#f59e0b] hover:bg-[#fbbf24] transition-colors cursor-pointer"
               >
-                Send Another Message
+                TRANSMIT ANOTHER MESSAGE
               </button>
             </div>
           ) : (
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-4" noValidate>
               {serverError && (
-                <div className="p-3.5 rounded-xl bg-red-50 dark:bg-red-950/40 border border-red-300 dark:border-red-500/30 text-red-700 dark:text-red-300 text-xs flex items-center gap-2">
+                <div className="p-3 bg-[#edf0f5] dark:bg-[#0c0e12] border border-red-500/50 text-red-600 dark:text-red-400 text-xs font-mono flex items-center gap-2">
                   <AlertCircle className="w-4 h-4 shrink-0" />
                   <span>{serverError}</span>
                 </div>
@@ -251,9 +243,9 @@ export default function Contact() {
                 <div>
                   <label
                     htmlFor="contact-name"
-                    className="block text-xs font-mono text-slate-700 dark:text-slate-300 mb-1.5"
+                    className="block text-xs font-mono text-[#727a8c] dark:text-[#656d7e] mb-1.5 uppercase"
                   >
-                    Your Name <span className="text-cyan-600 dark:text-cyan-400">*</span>
+                    IDENTIFIER / NAME <span className="text-[#f59e0b]">*</span>
                   </label>
                   <input
                     id="contact-name"
@@ -261,14 +253,14 @@ export default function Contact() {
                     {...register("name")}
                     placeholder="Jane Doe"
                     disabled={isSubmitting}
-                    className={`w-full px-4 py-3 rounded-xl bg-slate-100/80 dark:bg-slate-950/70 border text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-600 transition-colors focus:outline-none ${
+                    className={`w-full px-3.5 py-2.5 bg-[#edf0f5] dark:bg-[#0c0e12] border text-xs font-mono text-[#0c0e12] dark:text-[#f1f3f9] placeholder-[#727a8c] dark:placeholder-[#656d7e] transition-colors focus:outline-none ${
                       errors.name
-                        ? "border-red-500/60 focus:border-red-400"
-                        : "border-slate-200 dark:border-white/[0.08] focus:border-cyan-500"
+                        ? "border-red-500 focus:border-red-500"
+                        : "border-[#d6dae5] dark:border-[#2a2e3d] focus:border-[#f59e0b]"
                     }`}
                   />
                   {errors.name && (
-                    <p className="text-red-600 dark:text-red-400 text-[11px] font-mono mt-1">
+                    <p className="text-red-500 text-[10px] font-mono mt-1">
                       {errors.name.message}
                     </p>
                   )}
@@ -277,9 +269,9 @@ export default function Contact() {
                 <div>
                   <label
                     htmlFor="contact-email"
-                    className="block text-xs font-mono text-slate-700 dark:text-slate-300 mb-1.5"
+                    className="block text-xs font-mono text-[#727a8c] dark:text-[#656d7e] mb-1.5 uppercase"
                   >
-                    Email Address <span className="text-cyan-600 dark:text-cyan-400">*</span>
+                    REPLY ADDRESS <span className="text-[#f59e0b]">*</span>
                   </label>
                   <input
                     id="contact-email"
@@ -287,14 +279,14 @@ export default function Contact() {
                     {...register("email")}
                     placeholder="jane@example.com"
                     disabled={isSubmitting}
-                    className={`w-full px-4 py-3 rounded-xl bg-slate-100/80 dark:bg-slate-950/70 border text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-600 transition-colors focus:outline-none ${
+                    className={`w-full px-3.5 py-2.5 bg-[#edf0f5] dark:bg-[#0c0e12] border text-xs font-mono text-[#0c0e12] dark:text-[#f1f3f9] placeholder-[#727a8c] dark:placeholder-[#656d7e] transition-colors focus:outline-none ${
                       errors.email
-                        ? "border-red-500/60 focus:border-red-400"
-                        : "border-slate-200 dark:border-white/[0.08] focus:border-cyan-500"
+                        ? "border-red-500 focus:border-red-500"
+                        : "border-[#d6dae5] dark:border-[#2a2e3d] focus:border-[#f59e0b]"
                     }`}
                   />
                   {errors.email && (
-                    <p className="text-red-600 dark:text-red-400 text-[11px] font-mono mt-1">
+                    <p className="text-red-500 text-[10px] font-mono mt-1">
                       {errors.email.message}
                     </p>
                   )}
@@ -305,24 +297,24 @@ export default function Contact() {
               <div>
                 <label
                   htmlFor="contact-message"
-                  className="block text-xs font-mono text-slate-700 dark:text-slate-300 mb-1.5"
+                  className="block text-xs font-mono text-[#727a8c] dark:text-[#656d7e] mb-1.5 uppercase"
                 >
-                  Message <span className="text-cyan-600 dark:text-cyan-400">*</span>
+                  TRANSMISSION BODY <span className="text-[#f59e0b]">*</span>
                 </label>
                 <textarea
                   id="contact-message"
                   rows={5}
                   {...register("message")}
-                  placeholder="Hi Gaurav, I would like to discuss a senior engineering opportunity / project collaboration..."
+                  placeholder="Hi Gaurav, I would like to discuss an engineering role / platform architecture collaboration..."
                   disabled={isSubmitting}
-                  className={`w-full px-4 py-3 rounded-xl bg-slate-100/80 dark:bg-slate-950/70 border text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-600 transition-colors focus:outline-none resize-none ${
+                  className={`w-full px-3.5 py-2.5 bg-[#edf0f5] dark:bg-[#0c0e12] border text-xs font-mono text-[#0c0e12] dark:text-[#f1f3f9] placeholder-[#727a8c] dark:placeholder-[#656d7e] transition-colors focus:outline-none resize-none ${
                     errors.message
-                      ? "border-red-500/60 focus:border-red-400"
-                      : "border-slate-200 dark:border-white/[0.08] focus:border-cyan-500"
+                      ? "border-red-500 focus:border-red-500"
+                      : "border-[#d6dae5] dark:border-[#2a2e3d] focus:border-[#f59e0b]"
                   }`}
                 />
                 {errors.message && (
-                  <p className="text-red-600 dark:text-red-400 text-[11px] font-mono mt-1">
+                  <p className="text-red-500 text-[10px] font-mono mt-1">
                     {errors.message.message}
                   </p>
                 )}
@@ -332,17 +324,17 @@ export default function Contact() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full py-3.5 px-6 rounded-xl font-semibold text-sm text-white bg-gradient-to-r from-cyan-600 via-blue-600 to-indigo-600 hover:from-cyan-500 hover:to-indigo-500 shadow-md shadow-cyan-600/25 transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed active:scale-[0.99]"
+                className="w-full py-3 px-5 font-mono text-xs font-semibold uppercase tracking-wider text-[#0c0e12] bg-[#f59e0b] hover:bg-[#fbbf24] transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed active:scale-[0.99]"
               >
                 {isSubmitting ? (
                   <>
-                    <Loader2 className="w-4 h-4 animate-spin" />
-                    <span>Transmitting Message...</span>
+                    <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                    <span>TRANSMITTING MESSAGE...</span>
                   </>
                 ) : (
                   <>
-                    <span>Send Message</span>
-                    <Send className="w-4 h-4" />
+                    <span>DISPATCH MESSAGE</span>
+                    <Send className="w-3.5 h-3.5" />
                   </>
                 )}
               </button>

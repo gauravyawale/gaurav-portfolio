@@ -9,39 +9,40 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative border-t border-slate-200 dark:border-white/[0.08] bg-slate-100/80 dark:bg-[#02040a] py-12 px-4 sm:px-6 lg:px-8 overflow-hidden transition-colors duration-300">
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-slate-500 dark:text-slate-400">
+    <footer className="relative border-t border-[#d6dae5] dark:border-[#2a2e3d] bg-[#ffffff] dark:bg-[#0c0e12] py-10 px-4 sm:px-6 lg:px-8 transition-colors duration-200">
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 font-mono text-xs text-[#727a8c] dark:text-[#656d7e]">
         {/* Left: Branding & Status */}
-        <div className="flex flex-col sm:flex-row items-center gap-3">
-          <div className="flex items-center gap-2 font-mono text-slate-800 dark:text-slate-300">
-            <span className="w-2 h-2 rounded-full bg-emerald-500 dark:bg-emerald-400" />
-            <span className="font-semibold">{portfolioData.profile.name}</span>
+        <div className="flex flex-col sm:flex-row items-center gap-2.5">
+          <div className="flex items-center gap-2 text-[#0c0e12] dark:text-[#f1f3f9] font-medium">
+            <span className="w-1.5 h-1.5 bg-[#f59e0b]" />
+            <span>{portfolioData.profile.name}</span>
           </div>
-          <span className="hidden sm:inline text-slate-400 dark:text-slate-600">•</span>
-          <span className="font-mono text-slate-500 dark:text-slate-400">
+          <span className="hidden sm:inline text-[#d6dae5] dark:text-[#2a2e3d]">{"//"}</span>
+          <span className="text-[11px] uppercase tracking-wider">
             Senior Software Engineer
           </span>
         </div>
 
-        {/* Middle: Stack credits */}
-        <div className="flex items-center gap-2 font-mono text-slate-500 text-[11px]">
-          <Terminal className="w-3.5 h-3.5 text-cyan-600 dark:text-cyan-400" />
-          <span>Next.js 16 • React 19 • Tailwind CSS • Three.js</span>
+        {/* Middle: Architectural Blueprint note */}
+        <div className="flex items-center gap-2 text-[11px] text-[#727a8c] dark:text-[#656d7e]">
+          <Terminal className="w-3 h-3 text-[#f59e0b]" />
+          <span>ARCH_SYSTEM // NEXT.JS 16 • REACT 19 • THREE.JS CAD • TAILWIND V4</span>
         </div>
 
-        {/* Right: Scroll to top */}
+        {/* Right: Coordinates & Scroll to top */}
         <div className="flex items-center gap-4">
-          <div className="flex items-center gap-1.5 text-slate-500 font-mono text-[11px]">
-            <Shield className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
-            <span>Edge Optimized</span>
+          <div className="flex items-center gap-1.5 text-[10px] text-[#727a8c] dark:text-[#656d7e] hidden sm:flex">
+            <Shield className="w-3 h-3 text-[#f59e0b]" />
+            <span>12.9716° N, 77.5946° E</span>
           </div>
 
           <button
             onClick={scrollToTop}
-            className="p-2.5 rounded-xl glass-panel text-slate-600 dark:text-slate-400 hover:text-cyan-600 dark:hover:text-cyan-400 hover:border-cyan-500/40 transition-all hover:scale-110 cursor-pointer"
+            className="p-2 bg-[#edf0f5] dark:bg-[#161922] border border-[#d6dae5] dark:border-[#2a2e3d] text-[#0c0e12] dark:text-[#f1f3f9] hover:border-[#f59e0b] hover:text-[#f59e0b] transition-all cursor-pointer"
             aria-label="Back to top of page"
+            title="Return to top"
           >
-            <ArrowUp className="w-4 h-4" />
+            <ArrowUp className="w-3.5 h-3.5" />
           </button>
         </div>
       </div>

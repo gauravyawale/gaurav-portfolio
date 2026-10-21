@@ -2,32 +2,30 @@
 
 import { useTheme } from "@/components/ThemeProvider";
 import { Sun, Moon } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
 
 interface ThemeToggleProps {
   className?: string;
   showLabel?: boolean;
 }
 
+const emptySubscribe = () => () => {};
+
 export default function ThemeToggle({
   className = "",
   showLabel = false,
 }: ThemeToggleProps) {
   const { resolvedTheme, toggleTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const mounted = useSyncExternalStore(emptySubscribe, () => true, () => false);
 
   if (!mounted) {
     return (
       <button
         aria-label="Toggle theme"
-        className={`w-9 h-9 rounded-xl border border-slate-200/80 dark:border-white/10 bg-white/70 dark:bg-slate-900/60 flex items-center justify-center text-slate-500 opacity-60 ${className}`}
+        className={`w-9 h-9 border border-[#2a2e3d] bg-[#161922] flex items-center justify-center text-[#9ba1b0] opacity-60 ${className}`}
         disabled
       >
-        <Moon className="w-4 h-4" />
+        <Moon className="w-3.5 h-3.5" />
       </button>
     );
   }
@@ -38,18 +36,18 @@ export default function ThemeToggle({
     <button
       onClick={toggleTheme}
       type="button"
-      aria-label={isDark ? "Switch to light theme" : "Switch to dark theme"}
-      title={isDark ? "Switch to light theme" : "Switch to dark theme"}
-      className={`group relative flex items-center gap-2 rounded-xl transition-all duration-300 cursor-pointer active:scale-95 ${
+      aria-label={isDark ? "Switch to Architectural Light Vellum" : "Switch to Deep Obsidian"}
+      title={isDark ? "Switch to Architectural Light Vellum" : "Switch to Deep Obsidian"}
+      className={`group relative flex items-center gap-2 transition-all duration-200 cursor-pointer active:scale-95 ${
         showLabel
-          ? "px-3 py-2 w-full justify-between bg-slate-100 dark:bg-slate-900/80 border border-slate-200 dark:border-white/10 text-slate-700 dark:text-slate-200 hover:border-cyan-500/50"
-          : "w-9 h-9 justify-center bg-white/80 dark:bg-slate-900/80 border border-slate-200/80 dark:border-white/10 text-slate-700 dark:text-slate-200 hover:text-cyan-600 dark:hover:text-cyan-400 hover:border-cyan-500/40 shadow-sm dark:shadow-none hover:shadow-[0_0_15px_rgba(56,189,248,0.25)]"
+          ? "px-3 py-2 w-full justify-between bg-[#161922] border border-[#2a2e3d] text-[#9ba1b0] hover:text-[#f1f3f9] hover:border-[#f59e0b]/50"
+          : "w-9 h-9 justify-center bg-[#ffffff] dark:bg-[#161922] border border-[#d6dae5] dark:border-[#2a2e3d] text-[#4b5262] dark:text-[#9ba1b0] hover:text-[#f59e0b] dark:hover:text-[#f59e0b] hover:border-[#f59e0b]/50"
       } ${className}`}
     >
-      <div className="relative w-4 h-4 flex items-center justify-center">
+      <div className="relative w-3.5 h-3.5 flex items-center justify-center">
         {/* Sun Icon */}
         <Sun
-          className={`w-4 h-4 text-amber-500 transition-all duration-300 absolute ${
+          className={`w-3.5 h-3.5 text-[#f59e0b] transition-all duration-200 absolute ${
             isDark
               ? "opacity-0 rotate-90 scale-50 pointer-events-none"
               : "opacity-100 rotate-0 scale-100"
@@ -57,7 +55,7 @@ export default function ThemeToggle({
         />
         {/* Moon Icon */}
         <Moon
-          className={`w-4 h-4 text-cyan-400 transition-all duration-300 absolute ${
+          className={`w-3.5 h-3.5 text-[#9ba1b0] group-hover:text-[#f59e0b] transition-all duration-200 absolute ${
             isDark
               ? "opacity-100 rotate-0 scale-100"
               : "opacity-0 -rotate-90 scale-50 pointer-events-none"
@@ -66,8 +64,8 @@ export default function ThemeToggle({
       </div>
 
       {showLabel && (
-        <span className="text-xs font-mono font-medium">
-          {isDark ? "Light Mode" : "Dark Mode"}
+        <span className="text-xs font-mono font-medium tracking-wider uppercase">
+          {isDark ? "Light Vellum" : "Obsidian"}
         </span>
       )}
     </button>

@@ -9,7 +9,7 @@ import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <div className="relative min-h-screen bg-slate-50 text-slate-900 dark:bg-[#030712] dark:text-slate-100 flex flex-col selection:bg-cyan-500/20 selection:text-cyan-800 dark:selection:text-cyan-300 transition-colors duration-300">
+    <div className="relative min-h-screen bg-[#f4f5f8] text-[#4b5262] dark:bg-[#0c0e12] dark:text-[#9ba1b0] flex flex-col selection:bg-[#f59e0b]/20 selection:text-[#f59e0b] transition-colors duration-200">
       {/* Sticky Glassmorphic Navbar */}
       <Navbar />
 

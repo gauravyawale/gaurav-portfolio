@@ -19,8 +19,8 @@ export const viewport: Viewport = {
   initialScale: 1,
   maximumScale: 5,
   themeColor: [
-    { media: "(prefers-color-scheme: dark)", color: "#030712" },
-    { media: "(prefers-color-scheme: light)", color: "#f8fafc" },
+    { media: "(prefers-color-scheme: dark)", color: "#0c0e12" },
+    { media: "(prefers-color-scheme: light)", color: "#f4f5f8" },
   ],
 };
 
@@ -85,7 +85,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="min-h-screen bg-slate-50 text-slate-900 dark:bg-[#030712] dark:text-slate-100 antialiased selection:bg-cyan-500/20 selection:text-cyan-800 dark:selection:text-cyan-300 transition-colors duration-300">
+      <body className="min-h-screen bg-[#f4f5f8] text-[#4b5262] dark:bg-[#0c0e12] dark:text-[#9ba1b0] antialiased selection:bg-[#f59e0b]/20 selection:text-[#f59e0b] transition-colors duration-200">
         <ThemeProvider>
           <CustomCursor />
           {children}

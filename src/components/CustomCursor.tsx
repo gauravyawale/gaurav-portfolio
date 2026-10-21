@@ -1,21 +1,28 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useSyncExternalStore } from "react";
+
+function useIsFinePointer() {
+  return useSyncExternalStore(
+    (callback) => {
+      if (typeof window === "undefined") return () => {};
+      const mq = window.matchMedia("(pointer: fine)");
+      mq.addEventListener("change", callback);
+      return () => mq.removeEventListener("change", callback);
+    },
+    () => (typeof window !== "undefined" ? window.matchMedia("(pointer: fine)").matches : false),
+    () => false
+  );
+}
 
 export default function CustomCursor() {
-  const [mounted, setMounted] = useState(false);
-  const [isPointer, setIsPointer] = useState(false);
+  const isFinePointer = useIsFinePointer();
   const [isHovering, setIsHovering] = useState(false);
   const [pos, setPos] = useState({ x: -100, y: -100 });
   const [trailingPos, setTrailingPos] = useState({ x: -100, y: -100 });
 
   useEffect(() => {
-    // Only enable custom cursor for non-touch fine pointer devices
-    const mediaQuery = window.matchMedia("(pointer: fine)");
-    if (!mediaQuery.matches) return;
-
-    setIsPointer(true);
-    setMounted(true);
+    if (!isFinePointer) return;
 
     let mouseX = -100;
     let mouseY = -100;
@@ -27,7 +34,6 @@ export default function CustomCursor() {
       mouseY = e.clientY;
       setPos({ x: mouseX, y: mouseY });
 
-      // Check if hovering interactive target
       const target = e.target as HTMLElement | null;
       if (
         target &&
@@ -47,8 +53,8 @@ export default function CustomCursor() {
 
     let animationId: number;
     const updateTrail = () => {
-      trailX += (mouseX - trailX) * 0.18;
-      trailY += (mouseY - trailY) * 0.18;
+      trailX += (mouseX - trailX) * 0.22;
+      trailY += (mouseY - trailY) * 0.22;
       setTrailingPos({ x: trailX, y: trailY });
       animationId = requestAnimationFrame(updateTrail);
     };
@@ -59,37 +65,45 @@ export default function CustomCursor() {
       window.removeEventListener("mousemove", handleMouseMove);
       cancelAnimationFrame(animationId);
     };
-  }, []);
+  }, [isFinePointer]);
 
-  if (!mounted || !isPointer) return null;
+  if (!isFinePointer) return null;
 
   return (
     <>
-      {/* Tiny bright center core */}
+      {/* Precision Drafting Center Cross-dot */}
       <div
-        className="fixed top-0 left-0 pointer-events-none z-50 rounded-full bg-cyan-600 dark:bg-cyan-400 shadow-[0_0_10px_#0284c7] dark:shadow-[0_0_10px_#38bdf8] transition-transform duration-75"
+        className="fixed top-0 left-0 pointer-events-none z-50 rounded-sm bg-[#f59e0b] transition-transform duration-75"
         style={{
-          width: isHovering ? "8px" : "6px",
-          height: isHovering ? "8px" : "6px",
-          transform: `translate3d(${pos.x - (isHovering ? 4 : 3)}px, ${
-            pos.y - (isHovering ? 4 : 3)
+          width: isHovering ? "6px" : "4px",
+          height: isHovering ? "6px" : "4px",
+          transform: `translate3d(${pos.x - (isHovering ? 3 : 2)}px, ${
+            pos.y - (isHovering ? 3 : 2)
           }px, 0)`,
         }}
       />
 
-      {/* Outer reactive halo ring */}
+      {/* Architectural Targeting Reticle Frame */}
       <div
-        className={`fixed top-0 left-0 pointer-events-none z-40 rounded-full border border-cyan-600/50 dark:border-cyan-400/40 transition-all duration-200 ease-out ${
+        className={`fixed top-0 left-0 pointer-events-none z-40 transition-all duration-200 ease-out border ${
           isHovering
-            ? "w-12 h-12 bg-cyan-600/15 dark:bg-cyan-500/10 border-cyan-600/80 dark:border-cyan-400/80 scale-125"
-            : "w-8 h-8 scale-100"
+            ? "w-9 h-9 border-[#f59e0b] bg-[#f59e0b]/10 scale-110"
+            : "w-7 h-7 border-[#2a2e3d] dark:border-[#2a2e3d] bg-transparent scale-100"
         }`}
         style={{
           transform: `translate3d(${
-            trailingPos.x - (isHovering ? 24 : 16)
-          }px, ${trailingPos.y - (isHovering ? 24 : 16)}px, 0)`,
+            trailingPos.x - (isHovering ? 18 : 14)
+          }px, ${trailingPos.y - (isHovering ? 18 : 14)}px, 0)`,
         }}
-      />
+      >
+        {/* Subtle corner crosshairs */}
+        <span className="absolute -top-1 -left-1 text-[9px] font-mono leading-none text-[#f59e0b]/70 select-none">
+          +
+        </span>
+        <span className="absolute -bottom-1 -right-1 text-[9px] font-mono leading-none text-[#f59e0b]/70 select-none">
+          +
+        </span>
+      </div>
     </>
   );
 }

@@ -6,7 +6,7 @@ import {
   Server,
   Cpu,
   ShieldCheck,
-  Sparkles,
+  Terminal,
 } from "lucide-react";
 
 export default function Skills() {
@@ -15,78 +15,75 @@ export default function Skills() {
   const getCategoryIcon = (category: string) => {
     switch (category) {
       case "Frontend":
-        return <Code2 className="w-5 h-5 text-cyan-400" />;
+        return <Code2 className="w-4 h-4 text-[#f59e0b]" />;
       case "Backend":
-        return <Server className="w-5 h-5 text-violet-400" />;
+        return <Server className="w-4 h-4 text-[#f59e0b]" />;
       case "DevOps & Tools":
-        return <Cpu className="w-5 h-5 text-emerald-400" />;
+        return <Cpu className="w-4 h-4 text-[#f59e0b]" />;
       default:
-        return <Code2 className="w-5 h-5 text-cyan-400" />;
+        return <Code2 className="w-4 h-4 text-[#f59e0b]" />;
     }
   };
 
   return (
     <section
       id="skills"
-      className="relative py-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto scroll-mt-20"
+      className="relative py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto scroll-mt-20 border-t border-[#d6dae5] dark:border-[#2a2e3d]"
     >
-      {/* Background glow */}
-      <div
-        className="absolute top-1/2 left-1/3 w-[600px] h-[600px] bg-cyan-600/5 rounded-full blur-[160px] pointer-events-none"
-        aria-hidden="true"
-      />
-
       <div className="text-center max-w-3xl mx-auto mb-16">
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-panel border-cyan-500/30 text-cyan-700 dark:text-cyan-400 text-xs font-mono mb-4">
-          <ShieldCheck className="w-3.5 h-3.5" />
-          <span>TECHNICAL ARSENAL</span>
+        <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#ffffff] dark:bg-[#161922] border border-[#d6dae5] dark:border-[#2a2e3d] text-[#0c0e12] dark:text-[#f1f3f9] text-xs font-mono mb-4">
+          <ShieldCheck className="w-3.5 h-3.5 text-[#f59e0b]" />
+          <span>TECHNICAL ARSENAL // CORE COMPETENCIES</span>
         </div>
-        <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-4">
-          Skills &amp; <span className="glow-accent-text">Core Competencies</span>
+        <h2 className="text-3xl sm:text-5xl font-bold text-[#0c0e12] dark:text-[#f1f3f9] tracking-tight mb-4">
+          Engineering <span className="text-[#d97706] dark:text-[#f59e0b]">Arsenal</span>
         </h2>
-        <p className="text-slate-600 dark:text-slate-400 text-sm sm:text-base leading-relaxed">
+        <p className="text-[#4b5262] dark:text-[#9ba1b0] text-sm sm:text-base leading-relaxed">
           Production-tested technologies across frontend architectures, backend API services, spatial databases, and automated deployment tooling.
         </p>
       </div>
 
       {/* Skills Matrix Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
         {skillGroups.map((group, idx) => (
           <div
             key={idx}
-            className="glass-panel glass-panel-hover rounded-2xl p-6 sm:p-7 border-slate-200/80 dark:border-white/[0.08] relative group flex flex-col justify-between"
+            className="bg-[#ffffff] dark:bg-[#161922] border border-[#d6dae5] dark:border-[#2a2e3d] p-6 relative flex flex-col justify-between corner-crosshair transition-colors hover:border-[#f59e0b]/50"
           >
             <div>
-              <div className="flex items-center gap-3 mb-6 pb-4 border-b border-slate-200/80 dark:border-white/[0.06]">
-                <div className="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-white/10">
-                  {getCategoryIcon(group.category)}
+              <div className="flex items-center justify-between mb-5 pb-3 border-b border-[#d6dae5] dark:border-[#2a2e3d]">
+                <div className="flex items-center gap-2.5">
+                  <div className="p-2 bg-[#edf0f5] dark:bg-[#0c0e12] border border-[#d6dae5] dark:border-[#2a2e3d]">
+                    {getCategoryIcon(group.category)}
+                  </div>
+                  <div>
+                    <h3 className="text-base font-bold text-[#0c0e12] dark:text-[#f1f3f9] tracking-tight font-mono">
+                      {group.category}
+                    </h3>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="text-lg font-bold text-slate-900 dark:text-white tracking-tight">
-                    {group.category}
-                  </h3>
-                  <span className="text-xs font-mono text-slate-500 dark:text-slate-400">
-                    {group.skills.length} Technologies
-                  </span>
-                </div>
+
+                <span className="text-[10px] font-mono text-[#727a8c] dark:text-[#656d7e] uppercase tracking-wider">
+                  [{String(group.skills.length).padStart(2, "0")} SPECS]
+                </span>
               </div>
 
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-1.5">
                 {group.skills.map((skill, sIdx) => (
                   <span
                     key={sIdx}
-                    className="px-3 py-1.5 rounded-xl text-xs sm:text-sm font-mono text-slate-700 dark:text-slate-200 bg-slate-100/80 dark:bg-slate-950/60 border border-slate-200/80 dark:border-white/[0.06] hover:border-cyan-500/40 hover:text-cyan-700 dark:hover:text-cyan-300 transition-colors flex items-center gap-1.5"
+                    className="px-2.5 py-1 text-xs font-mono text-[#4b5262] dark:text-[#9ba1b0] bg-[#edf0f5] dark:bg-[#0c0e12] border border-[#d6dae5] dark:border-[#2a2e3d] hover:border-[#f59e0b] hover:text-[#0c0e12] dark:hover:text-[#f1f3f9] transition-colors flex items-center gap-1.5"
                   >
-                    <span className="w-1.5 h-1.5 rounded-full bg-cyan-500 dark:bg-cyan-400/80" />
+                    <span className="w-1 h-1 bg-[#f59e0b]" />
                     {skill}
                   </span>
                 ))}
               </div>
             </div>
 
-            <div className="mt-6 pt-4 border-t border-slate-200/80 dark:border-white/[0.04] text-[11px] font-mono text-slate-500 flex items-center gap-1.5">
-              <Sparkles className="w-3 h-3 text-cyan-600 dark:text-cyan-400" />
-              <span>Production verified on client &amp; internal platforms</span>
+            <div className="mt-6 pt-3 border-t border-[#d6dae5] dark:border-[#2a2e3d] text-[10px] font-mono text-[#727a8c] dark:text-[#656d7e] flex items-center gap-1.5 uppercase tracking-wider">
+              <Terminal className="w-3 h-3 text-[#f59e0b]" />
+              <span>Production validated across enterprise SCADA &amp; SaaS</span>
             </div>
           </div>
         ))}

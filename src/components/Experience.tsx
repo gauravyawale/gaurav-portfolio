@@ -6,10 +6,6 @@ import {
   Briefcase,
   Calendar,
   MapPin,
-  CheckCircle,
-  Sparkles,
-  Zap,
-  Layers,
   ChevronDown,
   ChevronUp,
 } from "lucide-react";
@@ -27,171 +23,160 @@ export default function Experience() {
   return (
     <section
       id="experience"
-      className="relative py-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto scroll-mt-20"
+      className="relative py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto scroll-mt-20 border-t border-[#d6dae5] dark:border-[#2a2e3d]"
     >
-      {/* Background ambient radial glow */}
-      <div
-        className="absolute top-1/2 left-0 -translate-y-1/2 w-[550px] h-[550px] bg-cyan-600/10 rounded-full blur-[160px] pointer-events-none"
-        aria-hidden="true"
-      />
-
       {/* Section Header */}
-      <div className="text-center max-w-3xl mx-auto mb-20">
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-panel border-cyan-500/30 text-cyan-700 dark:text-cyan-400 text-xs font-mono mb-4">
-          <Briefcase className="w-3.5 h-3.5" />
-          <span>CAREER TRACK RECORD</span>
+      <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#ffffff] dark:bg-[#161922] border border-[#d6dae5] dark:border-[#2a2e3d] text-[#0c0e12] dark:text-[#f1f3f9] text-xs font-mono mb-4">
+          <Briefcase className="w-3.5 h-3.5 text-[#f59e0b]" />
+          <span>RECORD // TENURE &amp; ARCHITECTURAL IMPACT</span>
         </div>
-        <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-4">
-          Professional <span className="glow-accent-text">Experience</span>
+        <h2 className="text-3xl sm:text-5xl font-bold text-[#0c0e12] dark:text-[#f1f3f9] tracking-tight mb-4">
+          Professional <span className="text-[#d97706] dark:text-[#f59e0b]">Experience</span>
         </h2>
-        <p className="text-slate-600 dark:text-slate-400 text-sm sm:text-base leading-relaxed">
+        <p className="text-[#4b5262] dark:text-[#9ba1b0] text-sm sm:text-base leading-relaxed">
           Technical leadership, enterprise platform architecture, and frontend performance optimizations across industrial IoT and high-scale SaaS products.
         </p>
       </div>
 
-      {/* Vertical Timeline Structure */}
-      <div className="relative border-l border-slate-300 dark:border-white/[0.1] ml-4 sm:ml-8 md:ml-28 space-y-16">
-        {experiences.map((exp: ExperienceType) => (
-          <div key={exp.id} className="relative pl-6 sm:pl-10 group">
-            {/* Timeline Node Bead */}
+      {/* Vertical Architectural Timeline */}
+      <div className="relative border-l border-[#d6dae5] dark:border-[#2a2e3d] ml-3 sm:ml-8 md:ml-24 space-y-12">
+        {experiences.map((exp: ExperienceType, expIdx: number) => (
+          <div key={exp.id} className="relative pl-6 sm:pl-9 group">
+            {/* Timeline Milestone Bead */}
             <div
-              className={`absolute -left-[17px] top-1.5 w-8 h-8 rounded-full border flex items-center justify-center transition-all duration-300 ${
+              className={`absolute -left-[13px] top-2 w-6 h-6 border flex items-center justify-center transition-all duration-200 ${
                 exp.isCurrent
-                  ? "bg-white dark:bg-[#090d16] border-cyan-500 dark:border-cyan-400 shadow-[0_0_15px_rgba(56,189,248,0.35)]"
-                  : "bg-slate-100 dark:bg-slate-900 border-slate-300 dark:border-white/20 group-hover:border-cyan-500/60 dark:group-hover:border-cyan-400/60"
+                  ? "bg-[#ffffff] dark:bg-[#161922] border-[#f59e0b]"
+                  : "bg-[#edf0f5] dark:bg-[#161922] border-[#d6dae5] dark:border-[#2a2e3d] group-hover:border-[#f59e0b]"
               }`}
             >
               {exp.isCurrent ? (
-                <span className="w-2.5 h-2.5 rounded-full bg-cyan-500 dark:bg-cyan-400 animate-pulse" />
+                <span className="w-2 h-2 bg-[#f59e0b] animate-pulse" />
               ) : (
-                <span className="w-2 h-2 rounded-full bg-slate-400 group-hover:bg-cyan-500 dark:group-hover:bg-cyan-400" />
+                <span className="w-1.5 h-1.5 bg-[#727a8c] dark:bg-[#656d7e] group-hover:bg-[#f59e0b]" />
               )}
             </div>
 
             {/* Experience Card */}
-            <div className="glass-panel glass-panel-hover rounded-3xl p-6 sm:p-9 border-slate-200/80 dark:border-white/[0.08] relative">
+            <div className="bg-[#ffffff] dark:bg-[#161922] border border-[#d6dae5] dark:border-[#2a2e3d] p-6 sm:p-8 relative corner-crosshair transition-colors hover:border-[#f59e0b]/50">
               {/* Header Info */}
-              <div className="flex flex-wrap items-start justify-between gap-4 mb-6 pb-6 border-b border-slate-200/80 dark:border-white/[0.06]">
+              <div className="flex flex-wrap items-start justify-between gap-4 mb-5 pb-5 border-b border-[#d6dae5] dark:border-[#2a2e3d]">
                 <div>
                   <div className="flex flex-wrap items-center gap-3 mb-1.5">
-                    <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white group-hover:text-cyan-600 dark:group-hover:text-cyan-300 transition-colors">
+                    <span className="text-[10px] font-mono text-[#f59e0b] uppercase tracking-widest border border-[#f59e0b]/40 px-1.5 py-0.5">
+                      EXP_{String(expIdx + 1).padStart(2, "0")}
+                    </span>
+                    <h3 className="text-xl sm:text-2xl font-bold text-[#0c0e12] dark:text-[#f1f3f9]">
                       {exp.role}
                     </h3>
                     {exp.isCurrent && (
-                      <span className="inline-flex items-center gap-1 px-3 py-0.5 rounded-full text-xs font-mono font-medium bg-cyan-50 dark:bg-cyan-500/10 text-cyan-700 dark:text-cyan-400 border border-cyan-300/80 dark:border-cyan-500/30">
-                        <Sparkles className="w-3 h-3" /> PRESENT ROLE
+                      <span className="px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider bg-[#f59e0b]/10 text-[#d97706] dark:text-[#f59e0b] border border-[#f59e0b]/30">
+                        ACTIVE ROLE
                       </span>
                     )}
                   </div>
-                  <div className="text-lg font-semibold text-cyan-700 dark:text-cyan-400 tracking-tight">
+                  <div className="text-base font-semibold text-[#d97706] dark:text-[#f59e0b] font-mono">
                     {exp.company}
                   </div>
                 </div>
 
-                <div className="flex flex-col sm:items-end gap-1.5 text-xs font-mono text-slate-500 dark:text-slate-400">
+                <div className="flex flex-col sm:items-end gap-1 font-mono text-xs text-[#727a8c] dark:text-[#656d7e]">
                   <div className="flex items-center gap-1.5">
-                    <Calendar className="w-3.5 h-3.5 text-slate-400 dark:text-slate-500" />
-                    <span className="text-slate-700 dark:text-slate-300">{exp.period}</span>
+                    <Calendar className="w-3.5 h-3.5" />
+                    <span className="text-[#0c0e12] dark:text-[#f1f3f9] font-medium">{exp.period}</span>
                   </div>
                   <div className="flex items-center gap-1.5">
-                    <MapPin className="w-3.5 h-3.5 text-slate-400 dark:text-slate-500" />
+                    <MapPin className="w-3.5 h-3.5" />
                     <span>{exp.location}</span>
                   </div>
                 </div>
               </div>
 
-              {/* Summary */}
-              <p className="text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed mb-6 font-normal">
+              {/* Summary Statement */}
+              <p className="text-sm text-[#4b5262] dark:text-[#9ba1b0] leading-relaxed mb-6 font-normal">
                 {exp.summary}
               </p>
 
-              {/* Performance Metrics Callout Bar */}
+              {/* Performance Metrics Row */}
               {exp.performanceMetrics && exp.performanceMetrics.length > 0 && (
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-8">
-                  {exp.performanceMetrics.map((pm, idx) => (
-                    <div
-                      key={idx}
-                      className="p-3.5 rounded-xl bg-slate-100/80 dark:bg-slate-950/60 border border-slate-200/80 dark:border-white/[0.05] flex items-center gap-3"
-                    >
-                      <div className="p-2 rounded-lg bg-cyan-100 dark:bg-cyan-950/50 text-cyan-700 dark:text-cyan-400 border border-cyan-200 dark:border-cyan-500/20">
-                        <Zap className="w-4 h-4" />
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-6 p-4 bg-[#edf0f5] dark:bg-[#0c0e12] border border-[#d6dae5] dark:border-[#2a2e3d]">
+                  {exp.performanceMetrics.map((pm, pmIdx) => (
+                    <div key={pmIdx} className="font-mono">
+                      <div className="text-xl sm:text-2xl font-bold text-[#0c0e12] dark:text-[#f1f3f9]">
+                        {pm.metric}
                       </div>
-                      <div>
-                        <div className="text-base sm:text-lg font-bold font-mono text-slate-900 dark:text-white glow-accent-text">
-                          {pm.metric}
-                        </div>
-                        <div className="text-[11px] font-mono text-slate-500 dark:text-slate-400">
-                          {pm.label}
-                        </div>
+                      <div className="text-[11px] text-[#727a8c] dark:text-[#656d7e] uppercase tracking-wide">
+                        {pm.label}
                       </div>
                     </div>
                   ))}
                 </div>
               )}
 
-              {/* Dedicated Sub-Projects (GeekyAnts: ABB & UnoJobs) */}
+              {/* Sub-Projects Accordion (ABB & UnoJobs) */}
               {exp.subProjects && exp.subProjects.length > 0 && (
-                <div className="space-y-4 mb-8">
-                  <div className="text-xs font-mono uppercase tracking-widest text-slate-500 dark:text-slate-400 mb-2 flex items-center gap-2">
-                    <Layers className="w-4 h-4 text-cyan-600 dark:text-cyan-400" />
-                    <span>Featured Platform Engagements &amp; Architectures</span>
+                <div className="space-y-4 mb-6">
+                  <div className="font-mono text-xs uppercase tracking-wider text-[#727a8c] dark:text-[#656d7e] flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 bg-[#f59e0b]" />
+                    <span>Key Client Engagements &amp; Architectural Modules</span>
                   </div>
 
-                  {exp.subProjects.map((sub) => {
+                  {exp.subProjects.map((sub, sIdx) => {
                     const isExpanded = expandedSubProject === sub.name;
                     return (
                       <div
-                        key={sub.name}
-                        className="rounded-2xl bg-slate-100/70 dark:bg-slate-950/70 border border-slate-200/80 dark:border-white/[0.06] overflow-hidden transition-all duration-200"
+                        key={sIdx}
+                        className="border border-[#d6dae5] dark:border-[#2a2e3d] bg-[#ffffff] dark:bg-[#161922]"
                       >
-                        {/* Sub-project Accordion Header */}
                         <button
                           type="button"
                           onClick={() => toggleSubProject(sub.name)}
-                          className="w-full p-4 sm:p-5 flex items-center justify-between text-left cursor-pointer hover:bg-slate-200/50 dark:hover:bg-white/[0.02] transition-colors"
+                          className="w-full p-4 flex items-center justify-between text-left cursor-pointer hover:bg-[#edf0f5]/60 dark:hover:bg-[#0c0e12]/60 transition-colors"
                         >
                           <div>
-                            <div className="flex flex-wrap items-center gap-2.5 mb-1">
-                              <span className="text-base sm:text-lg font-bold text-slate-900 dark:text-white group-hover:text-cyan-700 dark:group-hover:text-cyan-300">
-                                {sub.name}
-                              </span>
-                              <span className="text-xs font-mono px-2.5 py-0.5 rounded-md bg-slate-200/70 dark:bg-white/[0.04] text-slate-700 dark:text-slate-400 border border-slate-300/60 dark:border-white/[0.04]">
-                                {sub.role}
-                              </span>
+                            <div className="flex items-center gap-2 font-mono text-xs text-[#d97706] dark:text-[#f59e0b]">
+                              <span>MOD_{String(sIdx + 1).padStart(2, "0")} {"//"}</span>
+                              <span>{sub.clientOrDomain}</span>
                             </div>
-                            <div className="text-xs font-mono text-cyan-700 dark:text-cyan-400/80">
-                              {sub.clientOrDomain}
+                            <div className="text-sm sm:text-base font-bold text-[#0c0e12] dark:text-[#f1f3f9]">
+                              {sub.name}
+                            </div>
+                            <div className="text-xs font-mono text-[#727a8c] dark:text-[#656d7e]">
+                              {sub.role} {sub.period ? `• ${sub.period}` : ""}
                             </div>
                           </div>
 
-                          <div className="p-1.5 rounded-lg bg-slate-200/50 dark:bg-white/[0.03] text-slate-600 dark:text-slate-400">
+                          <div className="p-1.5 border border-[#d6dae5] dark:border-[#2a2e3d] text-[#727a8c] dark:text-[#656d7e]">
                             {isExpanded ? (
-                              <ChevronUp className="w-4 h-4" />
+                              <ChevronUp className="w-4 h-4 text-[#f59e0b]" />
                             ) : (
                               <ChevronDown className="w-4 h-4" />
                             )}
                           </div>
                         </button>
 
-                        {/* Sub-project Expanded Details */}
                         {isExpanded && (
-                          <div className="px-4 pb-5 sm:px-5 sm:pb-6 pt-2 border-t border-slate-200/80 dark:border-white/[0.04] space-y-4 animate-in fade-in duration-150">
-                            <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                          <div className="p-4 pt-0 border-t border-[#d6dae5] dark:border-[#2a2e3d] animate-in fade-in duration-150">
+                            <p className="text-xs text-[#4b5262] dark:text-[#9ba1b0] leading-relaxed my-3">
                               {sub.summary}
                             </p>
 
-                            {/* Optimization Highlights Callouts */}
+                            {/* Subproject Optimizations */}
                             {sub.optimizations && sub.optimizations.length > 0 && (
-                              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+                              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 my-3">
                                 {sub.optimizations.map((opt, oIdx) => (
                                   <div
                                     key={oIdx}
-                                    className="p-3 rounded-xl bg-white dark:bg-slate-900/60 border border-cyan-500/20"
+                                    className="p-3 bg-[#edf0f5] dark:bg-[#0c0e12] border border-[#d6dae5] dark:border-[#2a2e3d] font-mono"
                                   >
-                                    <div className="text-xs font-bold text-cyan-800 dark:text-cyan-300 font-mono">
-                                      {opt.label}: {opt.metric}
+                                    <div className="text-sm font-bold text-[#d97706] dark:text-[#f59e0b]">
+                                      {opt.metric}
                                     </div>
-                                    <div className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5 leading-snug">
+                                    <div className="text-[11px] font-semibold text-[#0c0e12] dark:text-[#f1f3f9]">
+                                      {opt.label}
+                                    </div>
+                                    <div className="text-[10px] text-[#727a8c] dark:text-[#656d7e] mt-0.5">
                                       {opt.detail}
                                     </div>
                                   </div>
@@ -199,25 +184,25 @@ export default function Experience() {
                               </div>
                             )}
 
-                            {/* Specific Architectural Accomplishments */}
-                            <div className="space-y-2">
+                            {/* Highlights List */}
+                            <div className="space-y-1.5 my-3">
                               {sub.highlights.map((h, hIdx) => (
                                 <div
                                   key={hIdx}
-                                  className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-700 dark:text-slate-300"
+                                  className="flex items-start gap-2 text-xs text-[#4b5262] dark:text-[#9ba1b0]"
                                 >
-                                  <CheckCircle className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
+                                  <span className="font-mono text-[#f59e0b] mt-0.5">■</span>
                                   <span className="leading-relaxed">{h}</span>
                                 </div>
                               ))}
                             </div>
 
-                            {/* Sub-project Tech Stack */}
-                            <div className="flex flex-wrap gap-1.5 pt-2">
-                              {sub.techStack.map((tech) => (
+                            {/* Sub Tech Stack */}
+                            <div className="flex flex-wrap gap-1.5 pt-3 border-t border-[#d6dae5] dark:border-[#2a2e3d]">
+                              {sub.techStack.map((tech, tIdx) => (
                                 <span
-                                  key={tech}
-                                  className="px-2 py-0.5 rounded text-[11px] font-mono text-cyan-800 dark:text-cyan-300 bg-cyan-50 dark:bg-cyan-950/40 border border-cyan-200 dark:border-cyan-500/20"
+                                  key={tIdx}
+                                  className="px-2 py-0.5 text-[10px] font-mono text-[#4b5262] dark:text-[#9ba1b0] bg-[#edf0f5] dark:bg-[#0c0e12] border border-[#d6dae5] dark:border-[#2a2e3d]"
                                 >
                                   {tech}
                                 </span>
@@ -231,27 +216,30 @@ export default function Experience() {
                 </div>
               )}
 
-              {/* General Achievements (For Fellowship & General Roles) */}
-              {(!exp.subProjects || exp.subProjects.length === 0) && (
-                <div className="space-y-3 mb-6">
-                  {exp.achievements.map((item, idx) => (
-                    <div
-                      key={idx}
-                      className="flex items-start gap-3 text-xs sm:text-sm text-slate-700 dark:text-slate-300"
-                    >
-                      <CheckCircle className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
-                      <span className="leading-relaxed">{item}</span>
-                    </div>
-                  ))}
+              {/* Detailed Achievements */}
+              <div className="space-y-2 mb-6">
+                <div className="font-mono text-xs uppercase tracking-wider text-[#727a8c] dark:text-[#656d7e]">
+                  VERIFIED DELIVERABLES
                 </div>
-              )}
+                {exp.achievements.map((ach, aIdx) => (
+                  <div
+                    key={aIdx}
+                    className="flex items-start gap-2 text-xs text-[#4b5262] dark:text-[#9ba1b0]"
+                  >
+                    <span className="font-mono text-[10px] text-[#f59e0b] mt-0.5">
+                      [{String(aIdx + 1).padStart(2, "0")}]
+                    </span>
+                    <span className="leading-relaxed">{ach}</span>
+                  </div>
+                ))}
+              </div>
 
-              {/* Core Skill Chips */}
-              <div className="pt-4 border-t border-slate-200/80 dark:border-white/[0.06] flex flex-wrap gap-2">
-                {exp.skills.map((skill) => (
+              {/* Skills Footer */}
+              <div className="pt-4 border-t border-[#d6dae5] dark:border-[#2a2e3d] flex flex-wrap gap-1.5">
+                {exp.skills.map((skill, sIdx) => (
                   <span
-                    key={skill}
-                    className="px-2.5 py-1 rounded-md text-xs font-mono text-slate-700 dark:text-slate-300 bg-slate-100/80 dark:bg-white/[0.03] border border-slate-200/80 dark:border-white/[0.06] hover:border-cyan-500/30 hover:text-cyan-700 dark:hover:text-cyan-300 transition-colors"
+                    key={sIdx}
+                    className="px-2.5 py-1 text-xs font-mono text-[#4b5262] dark:text-[#9ba1b0] bg-[#edf0f5] dark:bg-[#0c0e12] border border-[#d6dae5] dark:border-[#2a2e3d] hover:border-[#f59e0b]/50 hover:text-[#0c0e12] dark:hover:text-[#f1f3f9] transition-colors"
                   >
                     {skill}
                   </span>

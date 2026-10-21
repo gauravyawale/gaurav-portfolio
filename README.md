@@ -15,11 +15,11 @@ Designed with sleek glassmorphism, responsive 3D WebGL particle simulations, com
 
 ## 🌟 Key Features
 
-- **🌌 Interactive Three.js Background**:
-  - WebGL particle constellation canvas featuring dynamic node connections, mouse-tracking velocity displacement, and adaptive particle rendering for light and dark color schemes.
-- **🌓 Dynamic Light & Dark Mode**:
-  - Seamless theme toggling with zero flash of unstyled content (FOUC), synchronized with `localStorage` and system preference fallbacks.
-- **🎥 Interactive Video Introduction**:
+- **📐 Architectural CAD 3D Drafting Grid**:
+  - Interactive Three.js structural ground plane featuring perspective drafting lines, orthogonal coordinate markers, mouse velocity parallax, and light/dark vellum adaptation.
+- **🌓 Architectural Studio Color Engine**:
+  - Deep obsidian (`#0c0e12`), charcoal slate cards (`#161922`), fine 1px borders (`#2a2e3d`), bone white typography (`#f1f3f9`), and Electric Amber (`#f59e0b`) accents.
+- **🎥 Interactive Video Briefing**:
   - Custom video showcase component with clickable timeline chapters, jump-to-time navigation, and engineering takeaway highlights.
 - **💼 Comprehensive Experience Timeline**:
   - Detailed career history spanning **GeekyAnts**, **ABB Enterprise Industrial IoT**, **UnoJobs SaaS**, and the **Crio.Do Full-Stack Fellowship**.

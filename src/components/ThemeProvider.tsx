@@ -1,6 +1,6 @@
 "use client";
 
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, { createContext, useContext, useEffect, useState, useSyncExternalStore } from "react";
 
 type Theme = "light" | "dark" | "system";
 
@@ -13,25 +13,31 @@ interface ThemeContextType {
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
+function subscribeTheme(callback: () => void) {
+  window.addEventListener("storage", callback);
+  return () => window.removeEventListener("storage", callback);
+}
+
+function getClientThemeSnapshot(): Theme {
+  return (localStorage.getItem("portfolio-theme") as Theme) || "dark";
+}
+
+function getServerThemeSnapshot(): Theme {
+  return "dark";
+}
+
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
+  const storeTheme = useSyncExternalStore(subscribeTheme, getClientThemeSnapshot, getServerThemeSnapshot);
   const [theme, setThemeState] = useState<Theme>("dark");
   const [resolvedTheme, setResolvedTheme] = useState<"light" | "dark">("dark");
-  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
-    const storedTheme = localStorage.getItem("portfolio-theme") as Theme | null;
-    const initialTheme: Theme = storedTheme || "dark";
-    setThemeState(initialTheme);
-
     const applyTheme = (t: Theme) => {
       const root = document.documentElement;
       let target: "light" | "dark" = "dark";
 
       if (t === "system") {
-        target = window.matchMedia("(prefers-color-scheme: dark)").matches
-          ? "dark"
-          : "light";
+        target = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
       } else {
         target = t;
       }
@@ -48,9 +54,8 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
       }
     };
 
-    applyTheme(initialTheme);
+    applyTheme(storeTheme);
 
-    // Listen to system preference changes
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
     const handleSystemChange = () => {
       const currentStored = localStorage.getItem("portfolio-theme") as Theme | null;
@@ -61,7 +66,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
     mediaQuery.addEventListener("change", handleSystemChange);
     return () => mediaQuery.removeEventListener("change", handleSystemChange);
-  }, []);
+  }, [storeTheme]);
 
   const setTheme = (newTheme: Theme) => {
     setThemeState(newTheme);
@@ -71,9 +76,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     let target: "light" | "dark" = "dark";
 
     if (newTheme === "system") {
-      target = window.matchMedia("(prefers-color-scheme: dark)").matches
-        ? "dark"
-        : "light";
+      target = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
     } else {
       target = newTheme;
     }
@@ -98,8 +101,8 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   return (
     <ThemeContext.Provider
       value={{
-        theme,
-        resolvedTheme: mounted ? resolvedTheme : "dark",
+        theme: theme || storeTheme,
+        resolvedTheme,
         setTheme,
         toggleTheme,
       }}
