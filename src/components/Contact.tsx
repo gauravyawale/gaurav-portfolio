@@ -115,8 +115,8 @@ export default function Contact() {
         {/* Left Information Card */}
         <div className="lg:col-span-2 bg-[#ffffff] dark:bg-[#161922] border border-[#d6dae5] dark:border-[#2a2e3d] p-6 sm:p-7 flex flex-col justify-between space-y-6 relative corner-crosshair">
           <div>
-            <div className="flex items-center gap-2 font-mono text-[11px] text-[#f59e0b] mb-2 uppercase tracking-wider">
-              <span className="w-1.5 h-1.5 bg-[#f59e0b] animate-pulse" />
+            <div className="flex items-center gap-2 font-mono text-[11px] text-emerald-600 dark:text-emerald-400 mb-2 uppercase tracking-wider">
+              <span className="w-2 h-2 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.8)] animate-pulse inline-block" />
               <span>CURRENT STATUS</span>
             </div>
             <h3 className="text-xl font-bold text-[#0c0e12] dark:text-[#f1f3f9] mb-2">

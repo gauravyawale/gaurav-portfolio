@@ -108,7 +108,7 @@ export default function Navbar() {
           {/* Status Badge, Theme Toggle & Direct Action */}
           <div className="hidden lg:flex items-center gap-3">
             <div className="flex items-center gap-2 px-3 py-1.5 bg-[#ffffff] dark:bg-[#161922] border border-[#d6dae5] dark:border-[#2a2e3d] text-[11px] font-mono text-[#4b5262] dark:text-[#9ba1b0]">
-              <span className="w-1.5 h-1.5 bg-[#f59e0b] animate-pulse inline-block" />
+              <span className="w-2 h-2 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.8)] animate-pulse inline-block" />
               <span>{portfolioData.profile.statusBadge}</span>
             </div>
 
@@ -147,7 +147,7 @@ export default function Navbar() {
           <div className="md:hidden mt-3 p-4 bg-[#ffffff] dark:bg-[#161922] border border-[#d6dae5] dark:border-[#2a2e3d] shadow-2xl animate-in fade-in duration-150">
             <div className="flex items-center justify-between gap-2 px-3 py-2 mb-3 bg-[#edf0f5] dark:bg-[#0c0e12] border border-[#d6dae5] dark:border-[#2a2e3d] text-[11px] font-mono text-[#4b5262] dark:text-[#9ba1b0]">
               <div className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 bg-[#f59e0b] animate-pulse inline-block" />
+                <span className="w-2 h-2 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.8)] animate-pulse inline-block" />
                 <span>{portfolioData.profile.statusBadge}</span>
               </div>
             </div>
