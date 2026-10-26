@@ -249,6 +249,19 @@ export default function Experience() {
           </div>
         ))}
       </div>
+
+      {/* Pre-engineering Career Context Strip (Step 7) */}
+      {portfolioData.careerContext && (
+        <div className="mt-14 p-5 bg-[#edf0f5]/80 dark:bg-[#161922]/80 border border-[#d6dae5] dark:border-[#2a2e3d] text-xs font-mono text-[#4b5262] dark:text-[#9ba1b0] flex items-start gap-3 corner-crosshair">
+          <span className="text-[#f59e0b] font-bold shrink-0 mt-0.5">■</span>
+          <div className="leading-relaxed">
+            <span className="font-semibold text-[#0c0e12] dark:text-[#f1f3f9] uppercase tracking-wider mr-2">
+              CAREER CONTEXT //
+            </span>
+            <span>{portfolioData.careerContext}</span>
+          </div>
+        </div>
+      )}
     </section>
   );
 }

@@ -30,7 +30,7 @@ Designed with sleek glassmorphism, responsive 3D WebGL particle simulations, com
 - **🚀 Project Deep-Dive Architecture Modals**:
   - Interactive project cards with category filters (`Full-Stack`, `Systems & Architecture`, `All`).
   - Modal breakdowns featuring layer-by-layer architectural diagrams, technical challenges solved, metrics, and technology tag stacks (including **Route-Mate**, **UnoJobs**, and **ABB Platform**).
-- **🛠 Categorized Skills Arsenal**:
+- **🛠 Categorized Tech Stack**:
   - Tabbed tech stack visualization highlighting Frontend, Backend, Databases, Real-Time architectures, and DevOps tools.
 - **📬 Type-Safe Contact Form with Resend**:
   - Contact section powered by `react-hook-form` and `zod` client/server schema validation.

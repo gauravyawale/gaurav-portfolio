@@ -27,7 +27,7 @@ export default function Home() {
         {/* Featured Projects with Architecture Details & Filters */}
         <Projects />
 
-        {/* Technical Arsenal & Core Competencies */}
+        {/* Tech Stack & Core Competencies */}
         <Skills />
 
         {/* Contact & Inquiries */}

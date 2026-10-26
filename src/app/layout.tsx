@@ -25,29 +25,69 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "Gaurav Yawale | Senior Software Engineer",
+  metadataBase: new URL("https://gauravyawale.com"),
+  title: "Gaurav Yawale | Senior Software Engineer & Frontend Architect",
   description:
-    "Senior Software Engineer with 4+ years of experience specializing in React, Next.js, TypeScript, Node.js, and high-performance web applications.",
+    "Senior Software Engineer & Frontend Architect with 5+ years of experience specializing in React, Next.js, TypeScript, and high-performance web systems in Bengaluru, India.",
   keywords: [
+    "frontend architect",
     "Senior Software Engineer",
-    "Full-Stack Developer",
-    "Next.js",
     "React",
+    "Next.js",
     "TypeScript",
-    "Node.js",
+    "Bengaluru",
+    "Full-Stack Developer",
+    "Fastify",
     "PostgreSQL",
-    "Redis",
-    "WebSockets",
+    "PostGIS",
     "GeekyAnts",
-    "Crio.Do",
   ],
-  authors: [{ name: "Gaurav Yawale" }],
+  authors: [{ name: "Gaurav Yawale", url: "https://gauravyawale.com" }],
+  creator: "Gaurav Yawale",
   openGraph: {
-    title: "Gaurav Yawale | Senior Software Engineer",
+    title: "Gaurav Yawale | Senior Software Engineer & Frontend Architect",
     description:
-      "Senior Software Engineer with 4+ years of experience specializing in React, Next.js, TypeScript, and high-performance web applications.",
+      "Senior Software Engineer & Frontend Architect with 5+ years of experience specializing in React, Next.js, TypeScript, and high-performance web systems in Bengaluru, India.",
     type: "website",
     locale: "en_US",
+    url: "https://gauravyawale.com",
+    siteName: "Gaurav Yawale Engineering Portfolio",
+    images: [
+      {
+        url: "[OG_IMAGE_URL]",
+        width: 1200,
+        height: 630,
+        alt: "Gaurav Yawale - Senior Software Engineer & Frontend Architect",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Gaurav Yawale | Senior Software Engineer & Frontend Architect",
+    description:
+      "Senior Software Engineer & Frontend Architect with 5+ years of experience specializing in React, Next.js, TypeScript, and high-performance web systems in Bengaluru, India.",
+    images: ["[OG_IMAGE_URL]"],
+  },
+};
+
+const jsonLdPerson = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Gaurav Yawale",
+  jobTitle: "Senior Software Engineer & Frontend Architect",
+  url: "https://gauravyawale.com",
+  sameAs: [
+    "https://linkedin.com/in/gaurav-yawale",
+    "https://github.com/gauravyawale",
+  ],
+  worksFor: {
+    "@type": "Organization",
+    name: "GeekyAnts",
+  },
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Bengaluru",
+    addressCountry: "India",
   },
 };
 
@@ -63,6 +103,12 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} dark scroll-smooth`}
     >
       <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(jsonLdPerson),
+          }}
+        />
         <script
           dangerouslySetInnerHTML={{
             __html: `

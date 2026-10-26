@@ -10,7 +10,7 @@ const NAV_ITEMS = [
   { num: "02", name: "Intro", href: "#intro-video" },
   { num: "03", name: "Experience", href: "#experience" },
   { num: "04", name: "Projects", href: "#projects" },
-  { num: "05", name: "Arsenal", href: "#skills" },
+  { num: "05", name: "Tech Stack", href: "#skills" },
   { num: "06", name: "Contact", href: "#contact" },
 ];
 

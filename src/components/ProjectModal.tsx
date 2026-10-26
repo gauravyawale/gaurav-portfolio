@@ -200,7 +200,7 @@ export default function ProjectModal({
           {project.fullTechStack && project.fullTechStack.length > 0 && (
             <div>
               <h4 className="text-xs font-mono uppercase tracking-widest text-[#727a8c] dark:text-[#656d7e] mb-2">
-                Full Technology Arsenal
+                Full Technology Stack
               </h4>
               <div className="space-y-2.5">
                 {project.fullTechStack?.map((category, idx) => (
@@ -226,20 +226,43 @@ export default function ProjectModal({
               </div>
             </div>
           )}
+
+          {/* Source Availability & NDA Disclaimer in Modal */}
+          <div className="p-3 bg-[#edf0f5] dark:bg-[#0c0e12] border border-[#d6dae5] dark:border-[#2a2e3d] text-xs font-mono">
+            <div className="text-[10px] text-[#727a8c] dark:text-[#656d7e] uppercase tracking-wider mb-1">
+              Source Availability:{" "}
+              <span
+                className={
+                  project.sourceAvailability === "PUBLIC"
+                    ? "text-emerald-600 dark:text-emerald-400 font-semibold"
+                    : "text-[#d97706] dark:text-[#f59e0b] font-semibold"
+                }
+              >
+                {project.sourceAvailability}
+              </span>
+            </div>
+            {project.ndaDisclaimer && (
+              <p className="text-[11px] text-[#727a8c] dark:text-[#656d7e] italic mt-1">
+                {project.ndaDisclaimer}
+              </p>
+            )}
+          </div>
         </div>
 
         {/* Modal Footer Actions */}
         <div className="p-4 sm:p-5 border-t border-[#d6dae5] dark:border-[#2a2e3d] bg-[#edf0f5] dark:bg-[#0c0e12] flex flex-wrap items-center justify-between gap-3 font-mono text-xs">
           <div className="flex items-center gap-2">
-            <a
-              href={project.githubUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-[#ffffff] dark:bg-[#161922] border border-[#d6dae5] dark:border-[#2a2e3d] text-[#0c0e12] dark:text-[#f1f3f9] hover:border-[#f59e0b] transition-all"
-            >
-              <GithubIcon className="w-3.5 h-3.5" />
-              <span>SOURCE CODE</span>
-            </a>
+            {project.githubUrl && (
+              <a
+                href={project.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-[#ffffff] dark:bg-[#161922] border border-[#d6dae5] dark:border-[#2a2e3d] text-[#0c0e12] dark:text-[#f1f3f9] hover:border-[#f59e0b] transition-all"
+              >
+                <GithubIcon className="w-3.5 h-3.5" />
+                <span>SOURCE CODE</span>
+              </a>
+            )}
 
             {project.liveUrl && (
               <a
@@ -248,9 +271,15 @@ export default function ProjectModal({
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1.5 px-4 py-2 font-semibold text-[#0c0e12] bg-[#f59e0b] hover:bg-[#fbbf24] transition-all"
               >
-                <span>LIVE DEMO</span>
+                <span>LIVE PRODUCT / DEMO</span>
                 <ExternalLink className="w-3.5 h-3.5" />
               </a>
+            )}
+
+            {!project.githubUrl && !project.liveUrl && project.sourceAvailability === "NDA PROTECTED" && (
+              <span className="text-xs text-[#727a8c] dark:text-[#656d7e] italic">
+                (Private under NDA — external links omitted)
+              </span>
             )}
           </div>
 

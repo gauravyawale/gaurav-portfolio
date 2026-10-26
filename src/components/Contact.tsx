@@ -104,7 +104,7 @@ export default function Contact() {
           <span>COMMUNICATIONS // DIRECT DISPATCH &amp; INQUIRIES</span>
         </div>
         <h2 className="text-3xl sm:text-5xl font-bold text-[#0c0e12] dark:text-[#f1f3f9] tracking-tight mb-4">
-          Initiate <span className="text-[#d97706] dark:text-[#f59e0b]">Contact</span>
+          Get in <span className="text-[#d97706] dark:text-[#f59e0b]">Touch</span>
         </h2>
         <p className="text-[#4b5262] dark:text-[#9ba1b0] text-sm sm:text-base leading-relaxed">
           Open to discuss senior software engineering roles, full-stack web applications, technical consulting, and frontend performance initiatives.
@@ -123,7 +123,7 @@ export default function Contact() {
               {profile.statusBadge}
             </h3>
             <p className="text-xs text-[#4b5262] dark:text-[#9ba1b0] leading-relaxed mb-6 font-normal">
-              Senior Software Engineer with 4+ years of production experience across enterprise SCADA systems, Next.js applications, and distributed platforms. Feel free to reach out via the dispatch console or directly through email.
+              Senior Software Engineer with 5+ years of production experience across enterprise SCADA systems, Next.js applications, and distributed platforms. Reach out using the contact form below, or email me directly at gsyawale@gmail.com.
             </p>
 
             {/* Direct Email with 1-Click Copy */}
@@ -205,7 +205,7 @@ export default function Contact() {
         {/* Right Form Card */}
         <div className="lg:col-span-3 bg-[#ffffff] dark:bg-[#161922] border border-[#d6dae5] dark:border-[#2a2e3d] p-6 sm:p-7 relative corner-crosshair">
           <div className="flex items-center justify-between pb-3 mb-4 border-b border-[#d6dae5] dark:border-[#2a2e3d] font-mono text-xs">
-            <span className="text-[#0c0e12] dark:text-[#f1f3f9] font-medium">DISPATCH CONSOLE</span>
+            <span className="text-[#0c0e12] dark:text-[#f1f3f9] font-medium">CONTACT FORM</span>
             <span className="text-[#727a8c] dark:text-[#656d7e] text-[10px]">[ END-TO-END VERIFIED ]</span>
           </div>
 

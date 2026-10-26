@@ -139,10 +139,31 @@ export default function Projects() {
               </div>
 
               {/* Performance Metric Box */}
-              <div className="p-2 mb-4 bg-[#edf0f5] dark:bg-[#0c0e12] border border-[#d6dae5] dark:border-[#2a2e3d] text-[10px] font-mono text-[#4b5262] dark:text-[#9ba1b0] flex items-center gap-1.5">
+              <div className="p-2 mb-3 bg-[#edf0f5] dark:bg-[#0c0e12] border border-[#d6dae5] dark:border-[#2a2e3d] text-[10px] font-mono text-[#4b5262] dark:text-[#9ba1b0] flex items-center gap-1.5">
                 <Zap className="w-3 h-3 text-[#f59e0b] shrink-0" />
                 <span className="truncate">{project.metrics}</span>
               </div>
+
+              {/* Source Availability (Step 6) */}
+              <div className="mb-3 font-mono text-[10px] tracking-wider text-[#727a8c] dark:text-[#656d7e]">
+                <span>Source availability: </span>
+                <span
+                  className={
+                    project.sourceAvailability === "PUBLIC"
+                      ? "text-emerald-600 dark:text-emerald-400 font-semibold"
+                      : "text-[#d97706] dark:text-[#f59e0b] font-semibold"
+                  }
+                >
+                  {project.sourceAvailability}
+                </span>
+              </div>
+
+              {/* NDA Disclaimer (Step 5) */}
+              {project.ndaDisclaimer && (
+                <div className="mb-3 p-2 bg-[#edf0f5] dark:bg-[#0c0e12] border border-[#d6dae5] dark:border-[#2a2e3d] text-[10px] font-mono text-[#727a8c] dark:text-[#656d7e] italic leading-tight">
+                  {project.ndaDisclaimer}
+                </div>
+              )}
             </div>
 
             <div>
@@ -166,18 +187,24 @@ export default function Projects() {
               {/* Card Actions */}
               <div className="pt-3 border-t border-[#d6dae5] dark:border-[#2a2e3d] flex items-center justify-between text-xs font-mono">
                 <div className="flex items-center gap-3">
-                  <a
-                    href={project.githubUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={(e) => e.stopPropagation()}
-                    className="inline-flex items-center gap-1.5 text-[#727a8c] dark:text-[#656d7e] hover:text-[#0c0e12] dark:hover:text-[#f1f3f9] transition-colors"
-                  >
-                    <GithubIcon className="w-3 h-3" />
-                    <span>REPO</span>
-                  </a>
+                  {project.githubUrl ? (
+                    <a
+                      href={project.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                      className="inline-flex items-center gap-1.5 text-[#727a8c] dark:text-[#656d7e] hover:text-[#0c0e12] dark:hover:text-[#f1f3f9] transition-colors"
+                    >
+                      <GithubIcon className="w-3 h-3" />
+                      <span>REPO</span>
+                    </a>
+                  ) : (
+                    <span className="text-[10px] text-[#727a8c] dark:text-[#656d7e]">
+                      {project.sourceAvailability === "NDA PROTECTED" ? "(NDA)" : "(private repo)"}
+                    </span>
+                  )}
 
-                  {project.liveUrl && (
+                  {project.liveUrl ? (
                     <a
                       href={project.liveUrl}
                       target="_blank"
@@ -186,8 +213,14 @@ export default function Projects() {
                       className="inline-flex items-center gap-1 text-[#d97706] dark:text-[#f59e0b] hover:underline transition-colors"
                     >
                       <ExternalLink className="w-3 h-3" />
-                      <span>DEMO</span>
+                      <span>LIVE</span>
                     </a>
+                  ) : (
+                    project.sourceAvailability === "NDA PROTECTED" && (
+                      <span className="text-[10px] text-[#727a8c] dark:text-[#656d7e]">
+                        (no public demo)
+                      </span>
+                    )
                   )}
                 </div>
 

@@ -18,7 +18,7 @@ export interface Project {
   metrics: string;
   tags: string[];
   category: "all" | "full-stack" | "systems";
-  githubUrl: string;
+  githubUrl?: string;
   liveUrl?: string;
   featured: boolean;
   architectureHighlights: string[];
@@ -28,6 +28,8 @@ export interface Project {
     category: string;
     items: string[];
   }[];
+  sourceAvailability: "PUBLIC" | "PRIVATE — DEMO ON REQUEST" | "NDA PROTECTED";
+  ndaDisclaimer?: string;
 }
 
 export interface ExperienceSubProject {
@@ -82,8 +84,22 @@ export interface VideoIntro {
 }
 
 export interface SkillGroup {
-  category: "Frontend" | "Backend" | "DevOps & Tools";
+  category: "Frontend" | "Backend" | "DevOps & Tools" | "AI & Productivity";
   skills: string[];
+}
+
+export interface CertificationItem {
+  title: string;
+  issuer: string;
+  date: string;
+  url: string;
+}
+
+export interface PublicationItem {
+  title: string;
+  publisher: string;
+  summary: string;
+  url: string;
 }
 
 export interface PortfolioData {
@@ -105,25 +121,29 @@ export interface PortfolioData {
   };
   introVideo: VideoIntro;
   experiences: Experience[];
+  careerContext: string;
   projects: Project[];
   skillsList: {
     frontend: string[];
     backend: string[];
     devOpsAndTools: string[];
+    aiAndProductivity?: string[];
   };
   skillGroups: SkillGroup[];
+  certifications: CertificationItem[];
+  publications: PublicationItem[];
 }
 
 export const portfolioData: PortfolioData = {
   profile: {
     name: "Gaurav Yawale",
-    title: "Senior Software Engineer | Frontend-Focused Full-Stack Developer",
-    role: "Senior Software Engineer",
+    title: "Senior Software Engineer & Frontend Architect",
+    role: "Senior Software Engineer & Frontend Architect",
     statusBadge: "Available for Senior Roles",
     headline: "Building robust web applications with React, Next.js, TypeScript, and modern full-stack architectures.",
-    bio: "Senior Software Engineer with 4+ years of experience engineering production web platforms at GeekyAnts and through the Crio.Do fellowship. Proven track record leading frontend delivery on enterprise industrial IoT platforms (ABB) and consumer SaaS recruitment systems (UnoJobs), emphasizing measurable web performance, modular component design, and automated test coverage.",
-    location: "Bengaluru, India (Open to Relocation)",
-    yearsOfExperience: "4+",
+    bio: "Senior Software Engineer with 5+ years of experience engineering production web platforms at GeekyAnts and through the Crio.Do fellowship. Proven track record delivering frontend architecture on enterprise industrial IoT platforms (ABB) and greenfield SaaS recruitment systems (UnoJobs), emphasizing measurable web performance, modular component design, and automated test coverage.",
+    location: "Bengaluru, India — open to relocation. Available for senior software engineering and frontend architecture roles.",
+    yearsOfExperience: "5+",
     stats: [
       {
         value: "38%",
@@ -166,7 +186,7 @@ export const portfolioData: PortfolioData = {
       {
         time: "0:00",
         seconds: 0,
-        title: "Introduction & 4+ Yrs at GeekyAnts",
+        title: "Introduction & 5+ Yrs Journey",
         summary: "Overview of frontend engineering trajectory, React/Next.js focus, and agile delivery.",
       },
       {
@@ -199,7 +219,7 @@ export const portfolioData: PortfolioData = {
       period: "Aug 2022 - Present",
       isCurrent: true,
       summary:
-        "Senior Software Engineer leading frontend architecture and implementation for enterprise industrial applications (ABB) and greenfield recruitment platforms (UnoJobs). Delivering measurable performance gains, high test coverage, and modular UI libraries.",
+        "Senior Software Engineer architecting and implementing frontend modules and shared UI systems for enterprise industrial applications (ABB) and greenfield recruitment platforms (UnoJobs). Delivering measurable performance gains, high test coverage, and modular UI libraries.",
       subProjects: [
         {
           name: "ABB Enterprise Industrial Platform",
@@ -213,6 +233,7 @@ export const portfolioData: PortfolioData = {
             "Standardized UI patterns across multiple workflows, reducing duplicate code by 40%.",
             "Increased React Testing Library (RTL) test coverage from 25% to 80%, reducing production defects by 70%.",
             "Optimized rendering through code splitting, lazy loading, and list virtualization, reducing bundle size by 38% and dashboard render time by 45%.",
+            "Shipped targeted bug fixes and minor features in .NET C# to unblock full-stack delivery.",
           ],
           optimizations: [
             {
@@ -239,11 +260,11 @@ export const portfolioData: PortfolioData = {
           role: "Core Frontend Engineer",
           period: "2022 - 2023",
           summary:
-            "Core frontend engineer on a greenfield SaaS recruitment platform built with React.js, Next.js, and TypeScript, supporting 50K+ active users.",
+            "Core frontend engineer on a greenfield SaaS recruitment platform supporting 50K+ registered users within four months of launch.",
           highlights: [
             "Engineered high-performance SSR and SSG page experiences supporting 50K+ users with fast First Contentful Paint.",
             "Implemented real-time bi-directional applicant and recruiter messaging via WebSockets.",
-            "Migrated core APIs from REST to GraphQL, reducing network payload size by 42%.",
+            "Migrated data-fetching flows from REST to GraphQL, reducing network payload size by 42%.",
             "Authored and maintained a 40+ component Storybook design system library to accelerate cross-team feature velocity.",
           ],
           optimizations: [
@@ -301,29 +322,10 @@ export const portfolioData: PortfolioData = {
       ],
       skills: ["React.js", "Node.js", "Express.js", "SQL", "Data Structures", "Algorithms", "REST APIs", "Git"],
     },
-    {
-      id: "exp-operations",
-      role: "Quality Head / Asst. Manager",
-      company: "Technical Operations and Quality Leadership",
-      location: "India",
-      period: "Oct 2016 - Sep 2021",
-      isCurrent: false,
-      summary:
-        "Managed structured workflows and analytical reporting systems for teams of 20+ members, leveraging SQL and Excel Macros to automate reporting and improve decision-making speed by 30%.",
-      achievements: [
-        "Led structured operational workflows and analytical reporting systems across teams of 20+ members.",
-        "Engineered SQL queries and automated Excel Macro scripts to eliminate manual data entry bottlenecks.",
-        "Improved operational decision-making speed by 30% through automated reporting pipelines and KPI dashboards.",
-        "Instituted rigorous quality assurance audits and process optimization standards.",
-      ],
-      performanceMetrics: [
-        { metric: "20+", label: "Team Members Managed" },
-        { metric: "+30%", label: "Decision-Making Speed" },
-        { metric: "5 Yrs", label: "Leadership Tenure" },
-      ],
-      skills: ["SQL", "Analytical Reporting", "Workflow Automation", "Process Engineering", "Team Leadership"],
-    },
   ],
+
+  careerContext:
+    "Pre-engineering career: Led quality and MIS operations for 20+ member teams (Oct 2016 – Sep 2021), automating reporting with SQL and Excel Macros before transitioning to full-stack engineering via a 12-month Crio.Do fellowship.",
 
   projects: [
     {
@@ -348,8 +350,9 @@ export const portfolioData: PortfolioData = {
         "Google Maps Platform",
       ],
       category: "full-stack",
-      githubUrl: "https://github.com/gauravyawale",
-      liveUrl: "https://route-mate.demo",
+      githubUrl: "https://github.com/gauravyawale/route-mate",
+      liveUrl: "https://route-mate-web-iota.vercel.app/dashboard",
+      sourceAvailability: "PUBLIC",
       featured: true,
       architectureHighlights: [
         "Turborepo monorepo architecture orchestrating React Native (Expo) mobile app, Next.js admin dashboard, and shared TypeScript packages.",
@@ -425,8 +428,8 @@ export const portfolioData: PortfolioData = {
       metrics: "50K+ users • 42% payload reduction via GraphQL • 40+ Storybook components",
       tags: ["Next.js", "React.js", "TypeScript", "GraphQL", "WebSockets", "Storybook", "Tailwind CSS", "TanStack Query"],
       category: "full-stack",
-      githubUrl: "https://github.com/gauravyawale",
-      liveUrl: "https://unojobs.demo",
+      liveUrl: "https://www.unojobs.com/in",
+      sourceAvailability: "PRIVATE — DEMO ON REQUEST",
       featured: true,
       architectureHighlights: [
         "Next.js SSR and SSG rendering patterns providing rapid First Contentful Paint and SEO indexing for 50K+ candidate profiles.",
@@ -487,8 +490,8 @@ export const portfolioData: PortfolioData = {
       metrics: "38% bundle reduction • 45% faster dashboard render • 80% RTL coverage",
       tags: ["React.js", "TypeScript", "Redux", "React Testing Library (RTL)", "Jest", "Tailwind CSS", "WebSockets"],
       category: "systems",
-      githubUrl: "https://github.com/gauravyawale",
-      liveUrl: "https://abb-telemetry.demo",
+      sourceAvailability: "NDA PROTECTED",
+      ndaDisclaimer: "Work performed under NDA. Metrics shown are aggregated and non-confidential.",
       featured: true,
       architectureHighlights: [
         "Architected and delivered 2 major frontend modules with React.js, TypeScript, and Redux within a 12-person agile team.",
@@ -555,7 +558,6 @@ export const portfolioData: PortfolioData = {
       "PostGIS",
       "Redis",
       "WebSockets",
-      ".NET C#",
     ],
     devOpsAndTools: [
       "Git",
@@ -563,6 +565,12 @@ export const portfolioData: PortfolioData = {
       "Docker",
       "Vercel",
       "AWS S3",
+    ],
+    aiAndProductivity: [
+      "GitHub Copilot",
+      "Cursor AI",
+      "Generative AI Workflows",
+      "AI-assisted Code Reviews",
     ],
   },
 
@@ -591,7 +599,6 @@ export const portfolioData: PortfolioData = {
         "PostGIS",
         "Redis",
         "WebSockets",
-        ".NET C#",
       ],
     },
     {
@@ -603,6 +610,53 @@ export const portfolioData: PortfolioData = {
         "Vercel",
         "AWS S3",
       ],
+    },
+    {
+      category: "AI & Productivity",
+      skills: [
+        "GitHub Copilot",
+        "Cursor AI",
+        "Generative AI Workflows",
+        "AI-assisted Code Reviews",
+      ],
+    },
+  ],
+
+  certifications: [
+    {
+      title: "Generative AI for Software Development",
+      issuer: "DeepLearning.AI",
+      date: "March 2026",
+      url: "https://www.deeplearning.ai/certificates/3ed363cf-0cc7-468b-9cda-3025193d0651?usp=sharing",
+    },
+    {
+      title: "Relational Database",
+      issuer: "freeCodeCamp",
+      date: "May 2026",
+      url: "https://www.freecodecamp.org/certification/gaurav-yawale/relational-databases-v9",
+    },
+    {
+      title: "Responsive Web Design",
+      issuer: "freeCodeCamp",
+      date: "March 2026",
+      url: "https://www.freecodecamp.org/certification/gaurav-yawale/responsive-web-design",
+    },
+    {
+      title: "Frontend Testing with React Testing Library (RTL)",
+      issuer: "Udemy",
+      date: "Sept 2022",
+      url: "https://www.udemy.com/certificate/UC-080aac15-e15d-400a-a7ca-abbd0404604d/",
+    },
+  ],
+
+  publications: [
+    {
+      title:
+        "Keeping Your Users Safe: A Comprehensive Guide to NextAuth with Customized Token Strategies",
+      publisher: "GeekyAnts Technical Insights",
+      summary:
+        "Technical deep-dive covering JWT rotation, RBAC, token expiry, and secure auth strategies in Next.js.",
+      url: "https://geekyants.com/blog/keeping-your-users-safe-a-comprehensive-guide-to-next-auth-with-customized-token",
     },
   ],
 };
